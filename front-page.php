@@ -8,28 +8,48 @@ get_header(); ?>
 	<div id="primary" class="content-area one-page">
 		<main id="main" class="site-main" role="main">
 
+                    
+                    
                     <section id="call-to-action">
-                        <div class="indent">
-                            <div class="front-left">
-                                <h2 class="section-title">Call to Action</h2>
-                            </div>
-                            <div class="front-right">
-                                Form
-                            </div> 
-                        </div>
-                    </section>
+                        <div class="indent clear">
+                            <?php 
+                            $query = new WP_Query( 'pagename=learn-more' );
+                            // The Loop
+                            if ( $query->have_posts() ) {
+                                    while ( $query->have_posts() ) {
+                                            $query->the_post();
+                                            echo '<div class="entry-content">';
+                                            the_content();
+                                            echo '</div>';
+                                    }
+                            }
+
+                            /* Restore original Post Data */
+                            wp_reset_postdata();
+                            ?>
+                        </div><!-- .indent -->
+                    </section><!-- #call-to-action -->
                
                     <section id="services">
-                        <div class="indent">
-                            <h2 class="services">Services</h2>
-                            some text goes here
-                            <ul>
-                                <li>Item one</li>
-                                <li>Item two</li>
-                                <li>Item 3</li>                         
-                            </ul>  
-                        </div>
-                    </section>
+                        <div class="indent clear">
+                            <?php 
+                            $query = new WP_Query( 'pagename=services' );
+                                
+                            // The Loop
+                            if ( $query->have_posts() ) {
+                                    while ( $query->have_posts() ) {
+                                            $query->the_post();
+                                            echo '<h2 class="section-title">' . get_the_title() . '</h2>';
+                                            echo '<div class="entry-content">';
+                                            the_content('');
+                                            echo '</div>';
+                                    }
+                            }
+                            /* Restore original Post Data */
+                            wp_reset_postdata();
+                            ?>
+                        </div><!-- .indent -->
+                    </section><!-- #services -->
                     
                     <section id="testimonials">
                          <div class="indent">
@@ -38,29 +58,68 @@ get_header(); ?>
                     </section>
                     
                     <section id="portfolio">
-                         <div class="indent">
-                             <h2 class="section-title">Our Work</h2>
-                         </div>
-                    </section>
+                        <div class="indent clear">
+                            <?php 
+                            $query = new WP_Query( 'pagename=portfolio' );
+                            // The Loop
+                            if ( $query->have_posts() ) {
+                                    while ( $query->have_posts() ) {
+                                            $query->the_post();
+                                            echo '<h2 class="section-title">' . get_the_title() . '</h2>';
+                                            echo '<div class="entry-content">';
+                                            the_content();
+                                            echo '</div>';
+                                    }
+                            }
+
+                            /* Restore original Post Data */
+                            wp_reset_postdata();
+                            ?>
+                        </div><!-- .indent -->
+                    </section><!-- #meet -->
                         
                     
                     <section id="about">
-                        <div class="indent">
-                            <h2 class="section-title">About Us</h2>
-                        </div>
-                    </section>
+                        <div class="indent clear">
+                            <?php 
+                            $query = new WP_Query( 'pagename=about' );
+                            // The Loop
+                            if ( $query->have_posts() ) {
+                                    while ( $query->have_posts() ) {
+                                            $query->the_post();
+                                            echo '<h2 class="section-title">' . get_the_title() . '</h2>';
+                                            echo '<div class="entry-content">';
+                                            the_content();
+                                            echo '</div>';
+                                    }
+                            }
+
+                            /* Restore original Post Data */
+                            wp_reset_postdata();
+                            ?>
+                        </div><!-- .indent -->
+                    </section><!-- #meet -->
                         
                     <section id="contact">
-                        <div class="indent">
-                            <div class="front-left">
-                                <h2 class="section-title">Contact Us</h2>
-                            </div>
-                            <div class="front-right">
-                                Address
-                            </div>  
-                         </div>
-                    </section>
-                    
+                        <div class="indent clear">
+                                <?php 
+                                $query = new WP_Query( 'pagename=contact' );
+                                // The Loop
+                                if ( $query->have_posts() ) {
+                                        while ( $query->have_posts() ) {
+                                                $query->the_post();
+                                                echo '<h2 class="section-title">' . get_the_title() . '</h2>';
+                                                echo '<div class="entry-content">';
+                                                the_content();
+                                                echo '</div>';
+                                        }
+                                }
+
+                                /* Restore original Post Data */
+                                wp_reset_postdata();
+                                ?>
+                        </div><!-- .indent -->
+                    </section><!-- #contact -->
                     
   
                     
