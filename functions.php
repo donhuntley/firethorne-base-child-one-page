@@ -10,3 +10,13 @@ function one_page_scripts() {
     }      
 }
 add_action('wp_enqueue_scripts', 'one_page_scripts');
+
+add_image_size( 'testimonial-mug', 253, 253, true);
+
+
+function exclude_testimonials( $query ) {
+    if ( !$query->is_category('testimonial') && $query->is_main_query() ) {
+        $query->set( 'cat', '-210' );
+    }
+}
+add_action( 'pre_get_posts', 'exclude_testimonials' );
