@@ -142,16 +142,16 @@ get_header(); ?>
                                 );
                                 $query = new WP_query( $args );
                                 if ( $query->have_posts() ) {
-                                    echo '<ul class="testimonials">';
+                                    echo '<ul class="portfolio">';
                                     while ( $query->have_posts() ) {
                                         $query->the_post();
                                         echo '<li class="clear">';
-                                        echo '<div class="testimonial-thumb">';
-                                        the_post_thumbnail('testimonial-mug');
+                                        echo '<div class="portfolio-thumb">';
+                                        the_post_thumbnail('portfolio-mug');
                                         echo '</div>';
-                                        echo '<aside class="testimonial-text">';
-                                        echo '<h3 class="testimonial-name">' . get_the_title() . '</h3>';
-                                        echo '<div class="testimonial-excerpt">';
+                                        echo '<aside class="portfolio-text">';
+                                        echo '<h3 class="portfolio-name">' . get_the_title() . '</h3>';
+                                        echo '<div class="portfolio-excerpt">';
                                         the_content('');
                                         echo '</div>';
                                         echo '</aside>';
@@ -166,6 +166,27 @@ get_header(); ?>
                              
                          </div>
                     </section>
+                    
+                    <section id="plans">
+                        <div class="indent clear">
+                            <?php 
+                            $query = new WP_Query( 'pagename=plans' );
+                            // The Loop
+                            if ( $query->have_posts() ) {
+                                    while ( $query->have_posts() ) {
+                                            $query->the_post();
+                                            echo '<h2 class="section-title">' . get_the_title() . '</h2>';
+                                            echo '<div class="entry-content">';
+                                            the_content();
+                                            echo '</div>';
+                                    }
+                            }
+
+                            /* Restore original Post Data */
+                            wp_reset_postdata();
+                            ?>
+                        </div><!-- .indent -->
+                    </section><!-- #meet -->
                     
                     <section id="about">
                         <div class="indent clear">

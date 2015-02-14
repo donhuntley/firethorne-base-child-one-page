@@ -20,3 +20,11 @@ function exclude_testimonials( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'exclude_testimonials' );
+
+function exclude_portfolios( $query ) {
+    if ( !$query->is_category('portfolio') && $query->is_main_query() ) {
+        $query->set( 'cat', '-210' );
+    }
+}
+add_action( 'pre_get_posts', 'exclude_portfolios' );
+
