@@ -4,7 +4,11 @@
  */
 
 get_header(); ?>
-
+    
+    <!-- Enable more tag on static pages (in event front page is changed from index to static) -->
+    <?php
+    global $more;
+    ?>
 	<div id="primary" class="content-area one-page">
 		<main id="main" class="site-main" role="main">
 
@@ -43,6 +47,7 @@ get_header(); ?>
                                 echo '<ul class="testimonials">';
                                 while ( $query->have_posts() ) {
                                     $query->the_post();
+                                    $more = 0;
                                     echo '<li class="clear">';
                                     echo '<div class="testimonial-thumb">';
                                     the_post_thumbnail('testimonial-mug');
@@ -75,6 +80,7 @@ get_header(); ?>
                                 if ( $query->have_posts() ) {
                                         while ( $query->have_posts() ) {
                                                 $query->the_post();
+                                                $more = 0;
                                                 echo '<h2 class="section-title">' . get_the_title() . '</h2>';
                                                 echo '<div class="entry-content">';
                                                 the_content('');
@@ -98,6 +104,7 @@ get_header(); ?>
                                         echo '<ul class="services-list">';
                                         while ( $services_query->have_posts() ) {
                                                 $services_query->the_post();
+                                                $more = 0;
                                                 echo '<li class="clear">';
                                                 echo '<a href="' . get_permalink() . '" title="Learn more about ' . get_the_title() . '">';
                                                 echo '<h3 class="services-title">' . get_the_title() . '</h3>';
